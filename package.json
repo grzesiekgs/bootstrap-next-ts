@@ -1,0 +1,72 @@
+{
+  "name": "bootstrap-next-ts",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "NODE_ENV=production next build && tsc --project tsconfig.server.json",
+    "start": "NODE_ENV=production node --max-http-header-size 15000 .next/server",
+    "dev": "cross-env NODE_ENV=development nodemon --inspect=0.0.0.0:9889 .next/server",
+    "ts-lint": "tsc --noEmit --project tsconfig.json",
+    "lint": "npm run ts-lint && eslint ./ --ext .js,.ts,.tsx",
+    "lint:fix": "npm run ts-lint && eslint ./ --fix --ext .js,.ts,.tsx",
+    "prettier": "prettier */**/*.{js,ts,tsx} --write",
+    "cypress": "cypress open",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@zeit/next-source-maps": "0.0.3",
+    "body-parser": "1.19.0",
+    "cookie-parser": "1.4.4",
+    "express": "4.17.1",
+    "isomorphic-unfetch": "3.0.0",
+    "next": "9.1.7",
+    "next-compose-plugins": "2.2.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  },
+  "devDependencies": {
+    "@storybook/react": "5.3.7",
+    "@types/cookie": "0.3.3",
+    "@types/cookie-parser": "1.4.2",
+    "@types/enzyme": "3.10.4",
+    "@types/express": "4.17.2",
+    "@types/jest": "24.9.0",
+    "@types/node": "13.1.8",
+    "@types/react": "16.9.17",
+    "@types/react-dom": "16.9.4",
+    "@typescript-eslint/eslint-plugin": "2.16.0",
+    "@typescript-eslint/parser": "2.16.0",
+    "@zeit/next-sass": "^1.0.1",
+    "babel-jest": "24.9.0",
+    "babel-plugin-import": "1.13.0",
+    "cross-env": "6.0.3",
+    "cypress": "3.8.2",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.18.0",
+    "eslint-plugin-react-hooks": "2.3.0",
+    "husky": "4.0.10",
+    "jest": "24.9.0",
+    "jest-transform-stub": "2.0.0",
+    "lint-staged": "10.0.0",
+    "nodemon": "2.0.2",
+    "prettier": "1.19.1",
+    "ts-jest": "24.3.0",
+    "ts-node": "8.6.2",
+    "typescript": "3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run ts-lint && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "npm run prettier",
+      "npm run lint:fix",
+      "git add"
+    ]
+  }
+}

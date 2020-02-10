@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "allowJs": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./types", "./@types"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "isolatedModules": true
+  },
+  "lib": ["dom", "es2018"],
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [".next", "node_modules"]
+}
