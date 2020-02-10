@@ -1,5 +1,4 @@
-import Head from 'next/head';
-import Document, { Main, NextScript } from 'next/document';
+import Document, { Main, NextScript, Head } from 'next/document';
 import React from 'react';
 import { WrappedDocumentContext } from '../@types/next';
 
