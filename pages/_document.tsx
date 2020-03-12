@@ -1,11 +1,10 @@
-import Document, { Main, NextScript, Head } from 'next/document';
+import Document, { DocumentContext, Head, Main, NextScript } from 'next/document';
 import React from 'react';
-import { WrappedDocumentContext } from '../@types/next';
 
 export interface AppDocumentProps {}
 
 export default class AppDocument extends Document<AppDocumentProps> {
-  static async getInitialProps(ctx: WrappedDocumentContext) {
+  static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
 
     return {
