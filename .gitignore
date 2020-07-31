@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-.next/
-.vscode/
-=======
 .git
 .next
 .vscode
 node_modules
->>>>>>> 70295cd... x

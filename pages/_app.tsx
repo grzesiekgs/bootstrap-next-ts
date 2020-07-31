@@ -3,7 +3,7 @@ import withRedux from 'next-redux-wrapper';
 import App, { AppContext } from 'next/app';
 import React from 'react';
 import { AppActions } from '../logic/app/actions';
-import { initializeStore } from '../logic/store';
+import { useStore } from '../logic/store';
 
 interface AppProps {
   pageProps: Record<string, string>;

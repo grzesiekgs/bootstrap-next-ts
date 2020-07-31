@@ -3,7 +3,7 @@ import { AppTypes } from './actions';
 import { appInitialState } from './initialState';
 import { AppState, SetInitializedAction, SetMountedAction } from './types';
 
-const HANDLERS: Handlers<AppState, SetInitializedAction & SetMountedAction> = {
+const HANDLERS: Handlers<AppState> = {
   [AppTypes.SET_INITIALIZED]: (state, action: SetInitializedAction) => ({
     ...state,
     initialized: action.initialized
