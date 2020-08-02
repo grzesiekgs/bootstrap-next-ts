@@ -14,7 +14,7 @@ const reduceObjectKey = (object: any, key: string) => {
   return undefined;
 };
 
-export const pick = <ObjectType extends object, Attributes extends keyof ObjectType>(
+export const pick = <ObjectType extends Record<string, unknown>, Attributes extends keyof ObjectType>(
   object: ObjectType,
   attributes: Attributes[]
 ): Pick<ObjectType, Attributes> =>

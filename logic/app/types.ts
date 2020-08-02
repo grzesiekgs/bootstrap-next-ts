@@ -10,7 +10,7 @@ export interface AppActionsTypes {
   SET_MOUNTED: string;
 }
 
-export interface SetInitializedAction extends Action {
+export interface SetInitializedAction extends Action<'SET_INITIALIZED'> {
   initialized: AppState['initialized'];
 }
 
