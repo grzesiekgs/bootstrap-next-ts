@@ -1,23 +1,34 @@
-import { NextPage } from 'next';
+import { GetStaticPropsResult, NextPage } from 'next';
 import React from 'react';
+import { AppActions } from '../logic/app/actions';
+import { reduxWrapper } from '../logic/store';
 import { PageLayout } from '../src/components/PageLayout/PageLayout';
 
 interface IndexPageProps {
-  companyName: string;
+  buildTime: string;
+  initialized: boolean;
+  mounted: boolean;
 }
 
 const IndexPage: NextPage<IndexPageProps> = (props) => (
   <PageLayout>
-    <div>{`HELLO ${props.companyName}`}</div>
+    <div>{`This page is STATIC and has been build ${props.buildTime}`}</div>
+    <div>{`initialized: ${props.initialized}`}</div>
+    <div>{`mounted: ${props.mounted}`}</div>
   </PageLayout>
 );
 
-IndexPage.getInitialProps = async () => {
-  // This executes only for given view. Perform initial data fetching or set anything that You need in redux store.
-  // This action will perform only on server side, and on route change.
+export const getStaticProps = reduxWrapper.getStaticProps<GetStaticPropsResult<IndexPageProps>>(({ store }) => {
+  store.dispatch(AppActions.setInitialized(true));
+
+  const state = store.getState();
+
   return {
-    companyName: 'Grzegorz Dunin-Ślęczek'
+    props: {
+      buildTime: new Date().toISOString(),
+      ...state.app
+    }
   };
-};
+});
 
 export default IndexPage;

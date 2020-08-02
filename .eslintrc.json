@@ -1,7 +1,5 @@
 {
-  "plugins": [
-    "react-hooks"
-  ],
+  "plugins": ["react-hooks"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 2018,
@@ -23,11 +21,14 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "space-before-function-paren": ["error", {
-      "anonymous": "always",
-      "named": "never",
-      "asyncArrow": "always"
-    }],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
     "indent": [0],
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
@@ -42,8 +43,10 @@
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-use-before-define": "warn",
     "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-unused-vars": ["error", {"ignore-pattern": "^_"}],
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   "overrides": [
     {

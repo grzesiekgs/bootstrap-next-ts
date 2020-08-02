@@ -1,13 +1,10 @@
-import { useMemo } from 'react';
-import { applyMiddleware, combineReducers, createStore, Store, Middleware } from 'redux';
+import { createWrapper } from 'next-redux-wrapper';
+import { applyMiddleware, combineReducers, createStore, Middleware, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { appReducer } from './app/reducer';
 import rootSaga from './rootSaga';
-import { PartialRootStore, RootState } from './types';
-
-let store: Store | null = null;
-const composeEnhancers = composeWithDevTools({});
+import { RootState } from './types';
 
 const bindMiddleware = (middlewares: Middleware[]) => {
   if (process.env.NODE_ENV === 'development') {
@@ -17,14 +14,13 @@ const bindMiddleware = (middlewares: Middleware[]) => {
   return applyMiddleware(...middlewares);
 };
 
-export const initializeStore = (state: RootState = initialState) => {
+export const initializeStore = (): Store<RootState> => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     combineReducers<RootState>({
       app: appReducer
-    } as any),
-    state,
-    composeEnhancers(applyMiddleware(sagaMiddleware))
+    }),
+    bindMiddleware([sagaMiddleware])
   );
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
@@ -32,4 +28,6 @@ export const initializeStore = (state: RootState = initialState) => {
   return store;
 };
 
-// 888888888888888888888888888888
+export const reduxWrapper = createWrapper<RootState>(initializeStore, {
+  debug: process.env.NODE_ENV === 'development'
+});

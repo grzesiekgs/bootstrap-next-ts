@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "ES2018",
     "module": "esnext",
     "allowJs": true,
     "jsx": "preserve",
@@ -24,7 +24,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "isolatedModules": true
   },
-  "lib": ["dom", "es2018"],
+  "lib": ["dom", "ES2020"],
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": [".next", "node_modules"]
 }
