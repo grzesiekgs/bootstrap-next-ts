@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
-import './pageLayout.scss';
+import Styles from './PageLayout.module.scss';
 
 const {
   publicRuntimeConfig: {
@@ -12,10 +12,6 @@ const {
 export interface PageLayoutProps {
   title?: string;
 }
-
-const Styles = {
-  pageLayout: 'page-layout'
-};
 
 export const PageLayout: FunctionComponent<PageLayoutProps> = ({ title, children }) => (
   <main className={Styles.pageLayout}>

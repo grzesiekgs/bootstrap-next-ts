@@ -1,6 +1,7 @@
-import { AppProps } from 'next/app';
 import React, { FunctionComponent } from 'react';
-import { reduxWrapper } from '../logic/store';
+import { AppProps } from 'next/app';
+import { reduxWrapper } from 'logic/store';
+import 'src/styles/global.scss';
 
 const WrappedApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => <Component {...pageProps} />;
 

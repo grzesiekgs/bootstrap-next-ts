@@ -1,8 +1,8 @@
 import { GetStaticPropsResult, NextPage } from 'next';
 import React from 'react';
-import { AppActions } from '../logic/app/actions';
-import { reduxWrapper } from '../logic/store';
-import { PageLayout } from '../src/components/PageLayout/PageLayout';
+import { AppActions } from 'logic/app/actions';
+import { reduxWrapper } from 'logic/store';
+import { PageLayout } from 'src/components/PageLayout/PageLayout';
 
 interface IndexPageProps {
   buildTime: string;

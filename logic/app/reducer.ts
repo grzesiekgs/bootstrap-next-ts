@@ -1,14 +1,14 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { createReducer, Handlers } from 'reduxsauce';
-import { ReduxWrapperHydrateAction } from '../types';
+import { ReduxWrapperHydrateAction } from 'logic/types';
+import { AppState, SetInitializedAction, SetMountedAction } from './types';
 import { AppTypes } from './actions';
 import { appInitialState } from './initialState';
-import { AppState, SetInitializedAction, SetMountedAction } from './types';
 
 const HANDLERS: Handlers<AppState> = {
-  [HYDRATE]: (state, { type: _type, ...partialState }: ReduxWrapperHydrateAction) => ({
+  [HYDRATE]: (state, { type: _type, payload }: ReduxWrapperHydrateAction) => ({
     ...state,
-    ...partialState
+    ...payload.app
   }),
   [AppTypes.SET_INITIALIZED]: (state, action: SetInitializedAction) => ({
     ...state,

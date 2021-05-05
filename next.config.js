@@ -1,5 +1,11 @@
-const withPlugins = require('next-compose-plugins');
-const sass = require('@zeit/next-sass');
-const runtimeConfig = require('./runtime.config');
-
-module.exports = withPlugins([[sass]], runtimeConfig);
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+// Provide prod or dev config.
+module.exports = (phase) => ({
+  publicRuntimeConfig: {
+    isDev: phase === PHASE_DEVELOPMENT_SERVER,
+    env: {
+      NODE_ENV: process.env.NODE_ENV
+    }
+  },
+  serverRuntimeConfig: {}
+});
