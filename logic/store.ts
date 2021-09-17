@@ -3,6 +3,7 @@ import { applyMiddleware, combineReducers, createStore, Middleware, Store } from
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { appReducer } from './app/reducer';
+import { initialState } from './initialState';
 import rootSaga from './rootSaga';
 import { RootState } from './types';
 
@@ -20,6 +21,7 @@ export const initializeStore = (): Store<RootState> => {
     combineReducers<RootState>({
       app: appReducer
     }),
+    initialState,
     bindMiddleware([sagaMiddleware])
   );
 
@@ -28,6 +30,6 @@ export const initializeStore = (): Store<RootState> => {
   return store;
 };
 
-export const reduxWrapper = createWrapper<RootState>(initializeStore, {
-  debug: process.env.NODE_ENV === 'development'
+export const reduxWrapper = createWrapper<Store<RootState>>(initializeStore, {
+  debug: false // process.env.NODE_ENV === 'development'
 });

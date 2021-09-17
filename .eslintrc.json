@@ -1,5 +1,4 @@
 {
-  "plugins": ["react-hooks"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 2018,
@@ -13,6 +12,7 @@
       "version": "detect"
     }
   },
+  "plugins": ["react-hooks"],
   "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   "env": {
     "browser": true,
@@ -29,7 +29,7 @@
         "asyncArrow": "always"
       }
     ],
-    "indent": [0],
+    "indent": "off",
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "object-curly-spacing": ["error", "always"],

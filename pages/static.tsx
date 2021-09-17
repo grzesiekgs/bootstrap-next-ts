@@ -4,21 +4,21 @@ import { reduxWrapper } from 'logic/store';
 import { AppActions } from 'logic/app/actions';
 import { PageLayout } from 'src/components';
 
-interface DynamicPageProps {
+interface IndexPageProps {
   buildTime: string;
   initialized: boolean;
   mounted: boolean;
 }
 
-const DynamicPage: NextPage<DynamicPageProps> = (props) => (
+const IndexPage: NextPage<IndexPageProps> = (props) => (
   <PageLayout>
-    <div>{`This page is DYNAMIC and has been build ${props.buildTime}`}</div>
+    <div>{`This page is STATIC and has been build ${props.buildTime}`}</div>
     <div>{`initialized: ${props.initialized}`}</div>
     <div>{`mounted: ${props.mounted}`}</div>
   </PageLayout>
 );
 
-export const getServerSideProps = reduxWrapper.getServerSideProps<DynamicPageProps>((store) => async () => {
+export const getStaticProps = reduxWrapper.getStaticProps<IndexPageProps>((store) => async () => {
   store.dispatch(AppActions.setInitialized(true));
 
   const state = store.getState();
@@ -31,4 +31,4 @@ export const getServerSideProps = reduxWrapper.getServerSideProps<DynamicPagePro
   };
 });
 
-export default DynamicPage;
+export default IndexPage;

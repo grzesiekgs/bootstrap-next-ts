@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": false,
+    "removeComments": true,
     "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
@@ -20,7 +20,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "typeRoots": ["./node_modules/@types", "./types", "./@types"],
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "isolatedModules": true
   },

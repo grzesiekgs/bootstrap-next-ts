@@ -1,6 +1,9 @@
 export const isFunctionType = <FunctionType>(fun: unknown): fun is FunctionType => typeof fun === 'function';
 
-export const callWhenFunction = (action?: (...args: any[]) => any, ...args: any[]): any | null => {
+export const callWhenFunction = <FunctionType extends (...args: any[]) => any = (...args: any[]) => any>(
+  action?: FunctionType,
+  ...args: Parameters<FunctionType>
+): ReturnType<FunctionType> | null => {
   if (typeof action !== 'function') {
     return null;
   }
