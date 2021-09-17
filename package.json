@@ -9,7 +9,8 @@
     "lint": "npm run ts-lint && eslint ./ --ext .js,.ts,.tsx",
     "lint:fix": "npm run ts-lint && eslint ./ --fix --ext .js,.ts,.tsx",
     "prettier": "prettier */**/*.{js,ts,tsx} --write",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "11.1.2",
@@ -45,16 +46,5 @@
     "redux-devtools-extension": "2.13.9",
     "ts-jest": "27.0.5",
     "typescript": "4.4.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run ts-lint && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "npm run prettier",
-      "npm run lint:fix"
-    ]
   }
 }

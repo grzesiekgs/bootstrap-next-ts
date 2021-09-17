@@ -1,6 +1,6 @@
-export const isFunctionType = <FunctionType>(fun: unknown): fun is FunctionType => typeof fun === 'function';
+export const isFunctionType = <FunctionType>(fun: any): fun is FunctionType => typeof fun === 'function';
 
-export const callWhenFunction = <FunctionType extends (...args: any[]) => any = (...args: any[]) => any>(
+export const callWhenFunction = <FunctionType extends AnyFunction = AnyFunction>(
   action?: FunctionType,
   ...args: Parameters<FunctionType>
 ): ReturnType<FunctionType> | null => {
@@ -11,8 +11,7 @@ export const callWhenFunction = <FunctionType extends (...args: any[]) => any = 
   return action(...args);
 };
 
-type DefaultCallArguments = unknown[];
-type EntryFunctionCall<Args extends DefaultCallArguments, ReturnValue> = (...args: Args) => ReturnValue;
+type EntryFunctionCall<Args extends unknown[], ReturnValue> = (...args: Args) => ReturnValue;
 type DefaultEntriesType = string | number | 'default';
 
 const defaultSwitcher: EntryFunctionCall<unknown[], unknown> = (value: unknown) => value;
@@ -20,7 +19,7 @@ const defaultSwitcher: EntryFunctionCall<unknown[], unknown> = (value: unknown) 
 export const switchCase = <
   ReturnValue = any,
   EntriesType extends DefaultEntriesType = DefaultEntriesType,
-  CallArguments extends DefaultCallArguments = DefaultCallArguments,
+  CallArguments extends unknown[] = unknown[],
   FunctionCall extends EntryFunctionCall<CallArguments, ReturnValue> = EntryFunctionCall<CallArguments, ReturnValue>,
   CasesType extends Record<string, any> = Partial<Record<EntriesType | 'default', FunctionCall | ReturnValue>>,
   SwitcherType extends EntryFunctionCall<CallArguments, EntriesType | 'default'> = EntryFunctionCall<
@@ -31,7 +30,7 @@ export const switchCase = <
   entries: CasesType,
   customSwitcher?: SwitcherType
 ) => {
-  const switcher: SwitcherType = customSwitcher || ((defaultSwitcher as unknown) as SwitcherType); // @TODO Find out how to get rid of unknown.
+  const switcher: SwitcherType = customSwitcher || (defaultSwitcher as unknown as SwitcherType); // @TODO Find out how to get rid of unknown.
   const cases: CasesType = Object.assign({ default: null }, entries);
   const defaultCase = cases.default;
 
